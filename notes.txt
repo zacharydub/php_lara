@@ -50,6 +50,7 @@ PHP provides many built in ones, such as:
 - die() - stop execution after executing the arguments, or can just call die() with no arguments
 - unset() - removes from array // unset($person['age']);
 - ucwords() - make Uppercase the first character of each word in a string
+- $_GET[‘keyName’] - extract query params from URL I.e localhost:8888/?name=zach ---> $_GET['name']
 
 Arrays
 $names = [
