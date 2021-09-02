@@ -1,0 +1,124 @@
+PHP
+https://laracasts.com/series/php-for-beginners
+
+Background
+- php was built for the web, hooks in easily to HTML
+
+- start with <?php - tells runtime that everything following is to be interpreted as php
+ 	- if file is pure PHP, can omit the closing tag
+	- if not, need closing tag ?> —> <h1><?php echo ‘Hello world’ ?></h1>
+
+
+- echo prints to console
+	- shorthand for opening php and echoing text: <?= ‘hello’;
+- string wrapped with single/double quotes - with double quotes you can include variables
+	echo “Hello, $name”;
+- semi colon represents end of command
+echo ‘hello world’;
+
+- $ php -h brings up available commands in CMD
+
+$ php -S localhost:8888 spins up a server and can then navigate to that URL to see the code output
+
+
+VARIABLES
+
+$<string>
+$greeting = ‘Hello World;
+echo $greeting;
+
+echo “Hello, $name”;
+echo “hello {$name}”;  —> optional to use brackets to make it clearer that we’re using variables
+echo ‘hello, ’ . $name;  —> the period is the concatenate operator
+echo "$greeting, $name";
+echo "{$greeting}, {$name}";
+
+Using with HTML
+- need closing tag
+- best to separate concerns, so use separate files
+
+
+Extracting query params
+http://localhost:8888/?name=zach
+
+$name = $_GET[‘name’]; —> will extract the name key/value from URL and save it to variable
+
+FUNCTIONS
+PHP provides many built in ones, such as:
+- htmlspecialchars() - converts special chars into html entities, used to sanitise inputs
+- var_dump() - dump the value for anything
+- die() - stop execution after executing the arguments, or can just call die() with no arguments
+- unset() - removes from array // unset($person['age']);
+- ucwords() - make Uppercase the first character of each word in a string
+
+Arrays
+$names = [
+'zach',
+'zach2',
+'zach3'
+];
+
+foreach ($names as $name){
+  echo $name . ', ';
+}
+
+<ul>
+      <?php
+        foreach ($names as $name){
+          echo "<li>$name</li>";
+        }
+      ?>
+
+      <?php foreach($names as $name) : ?>
+      <li><?= $name ?></li>
+      <?php endforeach; ?>
+  </ul>
+
+Associative Array
+- any number of key/value pairs
+
+$person = [
+      ‘age’ => 31,
+      ‘hair’ => ‘brown’,
+      ‘career’ => ‘web developer’,’
+      ‘completed’ => true
+];
+
+Miscellaneous
+- Ternary operator: true ? ‘true’ : ‘false’;
+
+MYSQL
+$ mysql.server start
+$ mysql -u root —> log in as root user
+mysql> show databases;
+mysql> create database mytodo;
+mysql> use mytodo;
+mysql> show tables;
+mysql> create table tableName (description text, completed boolean);
+mysql> describe tableName;
+mysql> drop table tableName;
+mysql> create table tableName (description text NOT NULL, completed boolean);
+mysql> describe tableName;
+mysql> drop table tableName;
+mysql> create table tableName (id integer PRIMARY KEY AUTO_INCREMENT, description text NOT NULL, completed boolean NOT NULL);
+mysql> describe tableName;
+mysql> insert into tableName (description, completed) values (‘go to store’, false);
+mysql> select * from tableName;
+
+Can use tools to automate workflow
+
+
+CLASSES
+- keywords defining visibility:
+	- public
+	- protected
+
+CONNECTING TO DB
+- dealing with exceptions - try/catch
+- PHP Data Object (PDO) used to connect to DB
+Questions
+
+- When spinning up a server using CMD, how does it know which file to run? Runs the index file. How to choose while file to run?
+- colon trick <?php foreach($task as $key => $value) : ?>
+- elongated syntax of commented out opening/closing <strike> tags on l4-sql_classes/index.view.php
+- unable to connect to DB in l4-sql_classes - https://laracasts.com/series/php-for-beginners/episodes/13
